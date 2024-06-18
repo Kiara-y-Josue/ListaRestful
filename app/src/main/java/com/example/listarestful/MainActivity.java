@@ -8,6 +8,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.listarestful.WevService.WebService;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,5 +25,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Map<String, String> datos = new HashMap<String, String>();
+        WebService ws= new WebService("https://reqres.in/api/users",
+                datos, MainActivity.this, MainActivity.this);
+        ws.execute("GET");
+
     }
 }
