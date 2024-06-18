@@ -31,5 +31,11 @@ public class MainActivity extends AppCompatActivity {
                 datos, MainActivity.this, MainActivity.this);
         ws.execute("GET");
 
+        JSONObject JSONlista = new JSONObject(result);
+        JSONArray JSONlistaUsuarios= JSONlista.getJSONArray("data");
+        lstUsuarios = Usuario.JsonObjectsBuild(JSONlistaUsuarios);
+        AdaptadorUsuario adapatorUsuario = new AdaptadorUsuario(this, lstUsuarios);
+        lstOpciones.setAdapter(adapatorUsuario);
+
     }
 }
